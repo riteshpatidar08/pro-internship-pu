@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { login } from '../redux/loginSlice';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+const passwordRegex = '^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$'
+
 const schema = z.object({
   email: z.string().email('Invalid email address'),
-  password: z.string().min(8, 'Password must be at least 8 character'),
-});
+  password: z.string().min(8, 'Password must be at least 8 character')})
 
 function Login() {
+  const dispatch = useDispatch()
+  const navigate  = useNavigate()
+  const {role ,token} = useSelector((state)=> state.login)
   const {
     register,
     handleSubmit,
@@ -16,8 +24,18 @@ function Login() {
     resolver: zodResolver(schema),
   });
   console.log(errors);
+
+  useEffect(()=>{
+    if(role === 'admin'){
+      navigate('/dashboard')
+    }
+    if(role === 'user'){
+      navigate('/')
+    }
+  },[role]) 
+
   const onSubmit = (data) => {
-    console.log(data);
+  dispatch(login(data))
   };
   return (
     <div className="flex items-center justify-center min-h-screen">

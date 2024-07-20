@@ -7,6 +7,7 @@ const protect = require('../middleware/protect');
 const admin = require('../middleware/admin')
 
 router.post('/createproduct', upload.single('image'), protect, admin,  productController.createProduct)
+router.get('/getproducts', protect, productController.getAllProducts )
 
 
 module.exports = router ;
