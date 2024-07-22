@@ -7,4 +7,4 @@ function NavLink({to , text , icon}) {
   )
 }
 
-export default NavLink
+export default NavLink ;

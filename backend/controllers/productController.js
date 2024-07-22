@@ -34,3 +34,11 @@ res.status(200).json({
   }
 }
 
+exports.deleteProduct = async(req,res,next)=>{
+   const {id} = req.params ;
+    const product = await Product.findByIdAndDelete(id) ;
+   
+      res.status(200).json({
+        message : "Product deleted Successfully"
+      })
+}

@@ -8,7 +8,7 @@ const admin = require('../middleware/admin')
 
 router.post('/createproduct', upload.single('image'), protect, admin,  productController.createProduct)
 router.get('/getproducts', protect, productController.getAllProducts )
-
+router.delete('/deleteProduct/:id' , protect , admin , productController.deleteProduct)
 
 module.exports = router ;
 

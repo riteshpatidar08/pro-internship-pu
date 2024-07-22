@@ -2,8 +2,10 @@ import React from 'react';
 import NavLink from './NavLink';
 import { LuUsers } from "react-icons/lu";
 import { RiAlignItemLeftLine } from "react-icons/ri";
-import logo from '../../assets/logo1.png'
+import logo from '../../assets/logo1.png' ;
+
 function SideNav() {
+
   return (
     <div className="w-64 bg-black text-white flex flex-col">
       <div className="h-16 flex items-center justify-center font-semibold text-xl border-b border-gray-200">

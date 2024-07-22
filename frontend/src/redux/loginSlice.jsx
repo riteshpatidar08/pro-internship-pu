@@ -53,6 +53,7 @@ const loginSlice = createSlice({
            state.token = token ,
            state.role = role ,
            state.name = name,
+           localStorage.setItem('name', name)
            localStorage.setItem('token' , token),
            localStorage.setItem('role', role)
            toast.success('Login Successfull')
