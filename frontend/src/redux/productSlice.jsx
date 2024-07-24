@@ -32,6 +32,25 @@ rejectWithValue(error)
     }
 })
 
+export const addProduct = createAsyncThunk('/addProduct', async(productData ,{rejectWithValue})=>{
+ try {
+    const formData = new FormData() ;
+    formData.append('name', productData.name);
+    formData.append('category', productData.category)
+    formData.append('image' , productData.image[0])
+    formData.append('new_price', productData.new_price)
+    formData.append("old_price", productData.old_price)
+    
+    const response = await axios.post('http://localhost:8000/api/createProduct', formData ,  {  headers : {
+                Authorization : `Bearer ${localStorage.getItem('token')}`
+            }})
+
+            return response.data.product
+ } catch (error) {
+    
+ }
+})
+
 const productSlice  = createSlice({
     name : 'product',
     initialState ,
@@ -45,6 +64,10 @@ const productSlice  = createSlice({
         }).addCase(fetchProducts.rejected, (state, action)=>{
             
             state.error = action.payload
+        }).addCase(addProduct.pending, (state)=>{
+            state.loading = true
+        }).addCase(addProduct.fulfilled, (state, action)=>{
+            state.loading = false
         })
     }
    
