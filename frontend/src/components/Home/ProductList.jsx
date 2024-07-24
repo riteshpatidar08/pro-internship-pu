@@ -1,8 +1,12 @@
 import React from 'react';
 import all_products from '../../assets/all_product';
 import ProductCard from './ProductCard';
+import {useSelector} from 'react-redux';
+
 function ProductList() {
-  const threeProducts = all_products.slice(6, 9);
+  
+  const {products} = useSelector((state)=>state.product)
+  const threeProducts = products.slice(0, 3);
   return (
     <div className=" container mx-auto py-8">
       <h1 className="text-center mb-12 text-2xl font-normal leading-wide">

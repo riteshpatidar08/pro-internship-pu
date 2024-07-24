@@ -8,7 +8,7 @@ function ProductCard({ product }) {
         <div className="absolute top-2 left-2 bg-red-500 text-white font-semibold text-xs p-1">
           -40%
         </div>
-        <img className="h-full w-full object-cover" src={product.image} />
+        <img className="h-full w-full object-cover" src={`http://localhost:8000/${product.image}`} />
         <div
           className=" absolute 
           bottom-0
