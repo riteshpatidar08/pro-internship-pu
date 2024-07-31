@@ -1,7 +1,19 @@
 import React from 'react';
-
+import { addTocart } from '../../redux/cartSlice';
+import { useDispatch } from 'react-redux';
 function ProductCard({ product }) {
   console.log(product);
+const dispatch = useDispatch()
+  const handleAddToCart = () => {
+dispatch(addTocart({
+    id : product._id,
+    name : product.name,
+    price : product.new_price ,
+    image : product.image,
+    old_price  : product.old_price
+
+}))
+  }
   return (
     <div>
       <div className="relative  group">
@@ -15,7 +27,7 @@ function ProductCard({ product }) {
           opacity-0 w-full  translate-y-full  group-hover:opacity-100 transition-all duration-200 ease-in-out group-hover:-translate-y-0"
         >
           <div className="mt-auto">
-            <button className="bg-black bg-opacity-50 px-6 py-4 w-full text-white">
+            <button onClick={handleAddToCart} className="bg-black bg-opacity-50 px-6 py-4 w-full text-white">
               Add to Cart
             </button>
           </div>

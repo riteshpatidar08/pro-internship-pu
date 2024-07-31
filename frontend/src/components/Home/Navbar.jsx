@@ -6,9 +6,11 @@ import { GoHeart } from 'react-icons/go';
 import { Link } from 'react-router-dom';
 import Navitems from './Navitems';
 import { NavData } from './data';
+import { useSelector } from 'react-redux';
 function Navbar() {
+  const {totalQuantity} = useSelector((state)=>state.cart)
   return (
-    <header className="p-4 border border-gray-200">
+    <header className="p-4 sticky top-0 z-50  bg-white border border-gray-200">
       <div>
         {/* //firstrow */}
         <div className="flex justify-between items-center p-2 mb-6">
@@ -38,11 +40,13 @@ function Navbar() {
                 Saved
               </span>
             </Link>
-            <Link to="/cart">
+            <Link to="/cart" className='relative'>
               <HiOutlineShoppingBag />
               <span className="text-xs font-normal hover:underline transition-all duration-200">
                 Cart
               </span>
+              {totalQuantity > 0 ?   <span className='bg-lime-500 font-medium absolute top-[-11px] right-1 flex items-center text-[9px] justify-center h-4 w-4 rounded-full'>{totalQuantity}</span> : null}
+            
             </Link>
           </div>
         </div>

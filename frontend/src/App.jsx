@@ -7,15 +7,18 @@ import Dashboard from './components/Dashboard/Dashboard';
 import Product from './components/Dashboard/Product';
 import PrivateRoute from './components/PrivateRoute';
 import {Toaster} from 'sonner' ;
-
+import Cart from './pages/Cart';
+import Navbar from './components/Home/Navbar';
 function App() {
   return (
     <>
       <div>
         <Toaster richColors position="top-center"  />
+          <Navbar />
         <Routes>
           <Route element={<PrivateRoute allowedRole={['user']}/>}>
                  <Route path="/" element={<Home />}></Route>
+                 <Route path='/cart' element={<Cart/>}/>
           </Route>
      <Route element={<PrivateRoute allowedRole={['admin']}/>}>
       <Route path="/dashboard" element={<Dashboard />}>

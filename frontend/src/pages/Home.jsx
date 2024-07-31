@@ -13,7 +13,7 @@ function Home() {
   })
   return (
     <div>
-      <Navbar />
+    
       <Hero />
       <GridSection />
       <Banner />

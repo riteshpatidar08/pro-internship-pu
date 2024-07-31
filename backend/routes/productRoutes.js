@@ -13,3 +13,9 @@ router.delete('/deleteProduct/:id' , protect , admin , productController.deleteP
 module.exports = router ;
 
 
+req.file = {
+    path : /uploads/dskfjdlkfjkdsjf
+}
+
+
+htpp://loclahost:8000/uploads/dsjflkdsajfk

@@ -13,6 +13,8 @@ mongoose.connect('mongodb://localhost:27017/shopping').then(()=>{
 app.use(cors())
 app.use(morgan('tiny'));
 app.use(express.json());
+
+//middleware to use when send files to frontnend
 app.use('/uploads', express.static('uploads'));
 
 
